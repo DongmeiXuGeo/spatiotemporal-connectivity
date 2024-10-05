@@ -1,7 +1,7 @@
 clc
 clear all
 load net
-%输入tif数据
+%Importing tif data
 [A1,R]=geotiffread('F:\0.TQP\data2\yinzitif\370\gyhbio10.tif');
 [A2,R]=geotiffread('F:\0.TQP\data2\yinzitif\370\gyhbio13.tif');
 [A3,R]=geotiffread('F:\0.TQP\data2\yinzitif\370\gyhbio14.tif');
@@ -31,8 +31,8 @@ results=sim(net,pred');
 r=results';
 re=(r-min(r))/(max(r)-min(r));
 re=reshape(re',1974,2611);
-%re还原为tif格式
+
 info = geotiffinfo('F:\0.TQP\Data\bio\126\gyhtif\bio3.tif');
-filename = strcat('F:\0.TQP\data2\habitat\ANN\syx370.tif'); % 栅格数据的每个文件地址+文件名
+filename = strcat('F:\0.TQP\data2\habitat\ANN\syx370.tif');
 geotiffwrite(filename,re,R,'GeoKeyDirectoryTag',info.GeoTIFFTags.GeoKeyDirectoryTag);
-%xlswrite('compare_20.xlsx',compare);%改名称
+%xlswrite('compare_20.xlsx',compare);
