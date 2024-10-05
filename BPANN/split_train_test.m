@@ -1,10 +1,9 @@
 function [X_train, y_train,  X_test, y_test] = split_train_test(X, y, k, ratio)
-%SPLIT_TRAIN_TEST 分割训练集和测试集
-%  参数X是数据矩阵 y是对应类标签 k是类别个数 ratio是训练集的比例
-%  返回训练集X_train和对应的类标签y_train 测试集X_test和对应的类标签y_test
+%SPLIT_TRAIN_TEST Split the training set and the test set
+%  The parameter X is the data matrix, y is the corresponding class label, k is the number of classes, and ratio is the proportion of the training set
 
 m = size(X, 1);
-y_labels = unique(y); % 去重，k应该等于length(y_labels) 
+y_labels = unique(y);
 d = [1:m]';
 
 X_train = [];
@@ -12,7 +11,7 @@ y_train= [];
 
 for i = 1:k
     comm_i = find(y == y_labels(i));
-    if isempty(comm_i) % 如果该类别在数据集中不存在
+    if isempty(comm_i) % 
         continue;
     end
     size_comm_i = length(comm_i);
